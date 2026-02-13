@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>be my valentine</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #2e0a1e; /* Deep Grape Wine */
+            height: 100vh;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #glitter-container, #cat-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        #glitter-container { z-index: 1; }
+        #cat-container { z-index: 100; }
+
+        .heart {
+            position: relative;
+            width: 245px;
+            height: 245px;
+            background-color: #ff69b4; 
+            transform: rotate(-45deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.6);
+            z-index: 10; 
+            animation: breathe 3s ease-in-out infinite;
+            margin-bottom: 80px; 
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.08); }
+        }
+
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 245px;
+            height: 245px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .heart::before { top: -122.5px; left: 0; }
+        .heart::after { top: 0; left: 122.5px; }
+
+        .text {
+            position: absolute;
+            transform: rotate(45deg) translateY(-40%); 
+            color: white;
+            font-size: 1.7rem;
+            font-weight: bold;
+            text-align: center;
+            text-transform: lowercase;
+            z-index: 11;
+            width: 240px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            z-index: 150; 
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-family: Arial, sans-serif;
+            text-transform: lowercase;
+        }
+
+        .btn-yes { background-color: #4CAF50; color: white; }
+        .btn-no { background-color: #f44336; color: white; }
+        .btn:hover { transform: scale(1.1); }
+
+        .cat-gif {
+            position: absolute;
+            animation: popIn 4s ease-in-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            15% { transform: scale(1); opacity: 1; }
+            85% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .glitter {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh); }
+            100% { transform: translateY(110vh); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="glitter-container"></div>
+    <div id="cat-container"></div>
+
+    <div class="heart">
+        <div class="text">will u b my valentine,<br>ira?</div>
+    </div>
+
+    <div class="btn-container">
+        <button class="btn btn-yes" onclick="answerYes()">yes!</button>
+        <button class="btn btn-no" onclick="answerNo()">no</button>
+    </div>
+
+    <script>
+        const myCatGifs = [
+            "C:/Users/Pc/Desktop/harsheel/52d8d7d7dd20b858e02fd818ba06c53b.gif",
+            "C:/Users/Pc/Desktop/harsheel/cat-rainbow.gif",
+            "C:/Users/Pc/Desktop/harsheel/kawii-cat.gif",
+            "C:/Users/Pc/Desktop/harsheel/labubu-big-into-energy-labubu.gif",
+            "C:/Users/Pc/Desktop/harsheel/OIP.webp",
+            "C:/Users/Pc/Desktop/harsheel/rare-doodle-cat-dancing-gif.gif",
+            "C:/Users/Pc/Desktop/harsheel/tenor.gif"
+        ];
+
+        const heartbreakGifs = [
+            "C:/Users/Pc/Desktop/harsheel/you-broke-my-heart-you-broke-me.gif",
+            "C:/Users/Pc/Desktop/harsheel/sponge-bob-squarepants-patrick-star.gif",
+            "C:/Users/Pc/Desktop/harsheel/angai313-spongebob-sad.gif",
+            "C:/Users/Pc/Desktop/harsheel/cat-crushing-broken-heart-4pyq1dsqzfiedcff.gif"
+        ];
+
+        const brainrotPuns = [
+            "ERROR 404: rizz not found. heart.exe has stopped working.",
+            "my heart just got voted off the island. skibidi sadness.",
+            "system crash: feelings.zip is corrupted. why u do this?",
+            "L + ratio + my heart is broken. please restart your choice.",
+            "fanum tax on my happiness? heart.mp4 failed to load.",
+            "you just sent my heart to the shadow realm. big L."
+        ];
+
+        function answerYes() {
+            window.location.href = "C:/Users/Pc/Desktop/harsheel/tenor (1).gif";
+        }
+
+        function answerNo() {
+            const randomGif = heartbreakGifs[Math.floor(Math.random() * heartbreakGifs.length)];
+            const randomPun = brainrotPuns[Math.floor(Math.random() * brainrotPuns.length)];
+
+            document.body.innerHTML = `
+                <div style="background-color: #1a0511; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; font-family: Arial; padding: 20px;">
+                    <h1 style="font-size: 2.5rem; color: #ff4d4d;">💔 CRITICAL FAILURE 💔</h1>
+                    <p style="font-size: 1.5rem; margin: 20px 0; max-width: 600px;">${randomPun}</p>
+                    <img src="${randomGif}" style="width: 300px; border: 5px solid white; border-radius: 15px; box-shadow: 0 0 20px rgba(255,0,0,0.5);">
+                    <button onclick="location.reload()" style="margin-top: 40px; padding: 15px 40px; background: #ff69b4; border: none; color: white; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1.2rem;">Try Again (Better Choice Pls)</button>
+                </div>
+            `;
+        }
+
+        function createGlitter() {
+            const container = document.getElementById('glitter-container');
+            for (let i = 0; i < 350; i++) {
+                const glitter = document.createElement('div');
+                glitter.className = 'glitter';
+                const size = Math.random() * 3 + 1 + 'px';
+                glitter.style.width = size;
+                glitter.style.height = size;
+                glitter.style.left = Math.random() * 100 + 'vw';
+                glitter.style.animationDuration = Math.random() * 2 + 2 + 's';
+                glitter.style.animationDelay = Math.random() * 5 + 's';
+                const colors = ['#ffffff', '#ffd700', '#fff5b7', '#ffb6c1', '#ff1493'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                glitter.style.backgroundColor = color;
+                glitter.style.boxShadow = `0 0 5px ${color}`;
+                container.appendChild(glitter);
+            }
+        }
+
+        function spawnCat() {
+            const container = document.getElementById('cat-container');
+            const cat = document.createElement('img');
+            cat.src = myCatGifs[Math.floor(Math.random() * myCatGifs.length)];
+            cat.className = 'cat-gif';
+            const size = Math.floor(Math.random() * 60) + 100;
+            cat.style.width = size + 'px';
+
+            let x, y;
+            do {
+                x = Math.random() * 85 + 5;
+                y = Math.random() * 85 + 5;
+            } while (x > 30 && x < 70 && y > 20 && y < 80); 
+
+            cat.style.left = x + 'vw';
+            cat.style.top = y + 'vh';
+            container.appendChild(cat);
+            setTimeout(() => { cat.remove(); }, 4000);
+        }
+
+        setInterval(() => {
+            if (document.querySelectorAll('.cat-gif').length < 6) { spawnCat(); }
+        }, 1000);
+
+        createGlitter();
+    </script>
+</body>
+</html>
